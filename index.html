@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WorldView365 - Real-time global weather, auto translation & news">
+  <meta name="keywords" content="weather, translation, news, multilingual, world, realtime">
+  <meta name="robots" content="index, follow">
+  <title>WorldView365 - Global Info & Weather</title>
+  <style>
+    body{margin:0;font-family:sans-serif;color:#333;text-align:center;background:#eef;}
+    header{padding:20px;background:#005f73;color:#fff;}
+    main{padding:20px;}
+    #weather{font-size:1.2rem;margin:20px 0;}
+    iframe{width:100%;border:none;}
+    footer{padding:10px;background:#333;color:#fff;}
+  </style>
+  <script>
+    async function loadWeather(){
+      let resp=await fetch('https://wttr.in/?format=3');
+      document.getElementById('weather').innerText=resp.ok?await resp.text():'Error loading weather';
+    }
+    window.onload=loadWeather;
+  </script>
+</head>
+<body>
+  <header><h1>🌍 WorldView365</h1><p>Live Global Weather, Multilingual Translation & News</p></header>
+  <main>
+    <div id="weather">Loading weather...</div>
+    <h2>🌐 Translation</h2>
+    <iframe src="https://translate.google.com" height="400"></iframe>
+    <h2>📰 Latest News</h2>
+    <iframe src="https://www.bing.com/news" height="600"></iframe>
+  </main>
+  <footer>&copy; 2025 WorldView365</footer>
+</body>
+</html>
